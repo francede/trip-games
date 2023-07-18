@@ -29,7 +29,13 @@ async function handleFA(){
     while(t > new Date()){
         await new Promise(r => setTimeout(r, 50));
         let i = randInt(1,10);
-        let code = getLetters(i);
+        let code;
+        if(i < 3){
+            code = getLetters(i+2);
+            code.concat("-");
+        }else{
+            code = getLetters(i);
+        }
         FA.innerHTML = code;
     }
 }
